@@ -74,7 +74,20 @@ const middleLi = list.children[1];
 //console.log(middleLi.nextElementSibling);
 
 // f) element.parentElement
-console.log(middleLi.parentElement);
+//console.log(middleLi.parentElement);
 
 // Zad 1.
 // Zapisz w zmiennych wszystkie elementy występujące w naszym dokumencie HTML. Staraj się nie modyfikować samego HTMLa, lecz jeżeli będzie to konieczne, zrób to.
+
+const body = document.querySelector("body");
+console.log(body);
+const nav = document.querySelector("nav");
+const articles = contentDiv.children;
+const firstArticleH2 = articles[0].firstElementChild;
+const firstArticleP = articles[0].lastElementChild;
+const listItems = list.children;
+console.log(nav);
+console.log(articles);
+console.log(firstArticleH2);
+console.log(firstArticleP);
+console.log(listItems);
