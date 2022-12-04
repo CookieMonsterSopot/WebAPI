@@ -55,5 +55,26 @@ const contentDiv = document.getElementById("content");
 // 2. SUB-SELEKTORY
 
 // a) element.children
-console.log(contentDiv);
-console.log(contentDiv.children);
+// console.log(contentDiv);
+// console.log(contentDiv.children);
+
+// b) element.childNodes
+//console.log(contentDiv.childNodes);
+
+// c) element.firstElementChild
+const list = document.querySelector("ul");
+// console.log(list);
+// console.log(list.firstElementChild);
+
+// d) element.lastElementChild
+//console.log(list.lastElementChild);
+
+// e) element.nextElementSibling / previousElementSibling
+const middleLi = list.children[1];
+//console.log(middleLi.nextElementSibling);
+
+// f) element.parentElement
+console.log(middleLi.parentElement);
+
+// Zad 1.
+// Zapisz w zmiennych wszystkie elementy występujące w naszym dokumencie HTML. Staraj się nie modyfikować samego HTMLa, lecz jeżeli będzie to konieczne, zrób to.
