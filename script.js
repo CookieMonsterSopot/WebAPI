@@ -136,3 +136,67 @@ liToRemove.remove();
 // Metoda usuwa wskazany element dziecko elementu na którym została wywołana.
 // list to wyżej zdefiniowana zmienna
 list.removeChild(list.firstElementChild);
+
+// 5. ZAMIANA ELEMENTÓW
+
+// a) element.replaceChild()
+// Metoda zamienia podane w argumentach elementy, 1 wstawia, 2 usuwa.
+list.replaceChild(additionalLi2, list.firstElementChild);
+// replaceChild() = remove() + appendChild() / insertBefore() / insertAdjacentHTMl()
+
+// 6. KLONOWANIE ELEMENTÓW
+
+// a) element.cloneNode()
+// Metoda klonująca element. Wywoływana na elemencie który chcemy sklonować.
+
+// a.1) klonowanie płytkie - same tagi
+// contentDiv to zmienna definiowana wyżej
+const shallowDivClone = contentDiv.cloneNode(false);
+
+// a.2) klonowanie głębokie - tagi + zawartość elementu
+const deepDivClone = contentDiv.cloneNode(true);
+console.log(deepDivClone);
+
+// 7. AKTUALIZACJA/DODAWANIE/USUWANIE ZAWARTOŚCI ELEMENTÓW
+
+// a) element.textContent i element.innerText
+// Metody stosowane zamiennie, jednak standardem jest textContent, tej własności będziemy używać.
+// shallowDivClone.textContent = "123321";
+// console.log(shallowDivClone);
+// shallowDivClone.innerText = "321123";
+// console.log(shallowDivClone);
+
+// b) element.innerHTML
+// console.log(list.innerHTML);
+// const html2 = "<h1>lalalalalalalalala</h1>";
+// list.innerHTML = html2;
+
+// c) element.appendChild()
+
+// 8. AKTUALIZACJA/DODAWANIE/USUWANIE ATRYBUTÓW ELEMENTÓW.
+
+// a) element.attributes
+// Główne zastosowanie .attributes to sprawdzenie ilości atrybutów danego elementu.
+//console.log(liToRemove.attributes.length);
+
+// b) element.setAttribute()
+// Metoda w pierwszym argumencie przyjmuje nazwę atrybutu do dodania, w drugim wartość tego atrybutu.
+//contentDiv.setAttribute("class", "main-container");
+
+// Zad 2.
+// Na wszystkich h2 w article dodaj klasę "article-heading"
+
+const allH2s = [...document.querySelectorAll("h2")];
+allH2s.forEach((h2) => {
+  h2.setAttribute("class", "article-heading");
+});
+
+// c) element.removeAttribute() - w argumencie metoda przyjmuje nazwę atrybutu który ma usunąć, metoda jest wywoływana na elemencie z którego chcemy usunąć atrybut
+allH2s.forEach((h2) => {
+  h2.removeAttribute("class");
+});
+
+// d) inne
+contentDiv.id = "123";
+contentDiv.className = "312";
+contentDiv.name = "456";
