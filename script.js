@@ -235,6 +235,7 @@ const divContent = document.createElement("div");
 divContent.setAttribute("id", "content");
 document.body.appendChild(divContent);
 //
+
 const renderHomePage = () => {
   const article = document.createElement("article");
   const articleH2 = document.createElement("h2");
@@ -334,7 +335,7 @@ spans[1].addEventListener("click", () => {
   displayForm();
 });
 
-// Zad 4. Kalkulator
+// Zad 4.1 Kalkulator
 // 1. Stwórz funkcję renderCalculator (zwykła fn)
 const renderCalculator = () => {
   // W funkcji:
@@ -390,6 +391,23 @@ const renderCalculator = () => {
   form.appendChild(resultSpan);
   // 12. Podepnij element <form> do diva content
   divContent.appendChild(form);
+
+  // Zad. 4.2
+  // 1. Na form dodaj eventListener (addEventListener), reaguj na event 'submit', pamiętaj o preventDefault w środku funkcji callbackowej.
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    // W EL:
+    // 2. Ściągnij wartości z obu inputów i selecta.
+    const number1 = +firstNumberInput.value;
+    const number2 = Number(secondNumberInput.value)
+    const operationType = select.value;
+    // 3. W zależności od wybranego typu działania, wykonaj odpowiednie operacje matematyczne i wyświetl wynik jako textContent resultSpana.
+    if (operationType === "+") resultSpan.textContent = number1 + number2;
+    if (operationType === "-") resultSpan.textContent = number1 - number2;
+    if (operationType === "*") resultSpan.textContent = number1 * number2;
+    if (operationType === "/") resultSpan.textContent = number1 / number2;
+    //resultSpan.textContent = *tutaj twój wynik*
+  });
 };
 
 // 13. Sam kalkulator wyświetlaj na podstronie pod przyciskiem Page 2 (opcjonalne)
