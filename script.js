@@ -333,3 +333,71 @@ spans[1].addEventListener("click", () => {
   divContent.innerHTML = "";
   displayForm();
 });
+
+// Zad 4. Kalkulator
+// 1. Stwórz funkcję renderCalculator (zwykła fn)
+const renderCalculator = () => {
+  // W funkcji:
+  // 2. Stwórz element <form> i ustaw jego id na 'calculator'
+  const form = document.createElement("form");
+  form.setAttribute("id", "calculator");
+  // 3. Stwórz 2 inputy, oba będą miały type "number" (setAttribute), pierwszemu nadaj id 'first-number-input', drugiemu 'second-number-input'
+  const firstNumberInput = document.createElement("input");
+  firstNumberInput.setAttribute("type", "number");
+  firstNumberInput.setAttribute("id", "first-number-input");
+
+  const secondNumberInput = document.createElement("input");
+  secondNumberInput.setAttribute("type", "number");
+  secondNumberInput.setAttribute("id", "second-number-input");
+  // 4. Stwórz element <select>
+  const select = document.createElement("select");
+  // 5. Stwórz zwykły array ["+", "-", "*", "/"], nazwij go options.
+  const options = ["+", "-", "*", "/"];
+  // 6. Metodą map przejedź po arrayu options i zapisz wynikk do zmiennej optionElements.
+  const optionElements = options.map((el) => {
+    // W metodzie:
+    // - stwórz element <option>
+    const option = document.createElement("option");
+    // - nadaj mu atrybut value na aktualny element po którym iterujesz (pierwszy parametr metody map)
+    option.value = el;
+    // - nadaj mu textContent na aktualny element po którym iterujesz (pierwszy parametr metody map)
+    option.textContent = el;
+    // - zwróć z mapa element <option> przy pomocy reutrn
+    return option;
+  });
+  // 7. Przypnij każdy element <option> do selecta (pkt 4)
+  optionElements.forEach((optionElement) => {
+    select.appendChild(optionElement);
+  });
+  // 8. Stwórz element button, type "submit", id 'calculator-submit-button', textContent 'Calculate'
+  const submitButton = document.createElement("button");
+  submitButton.setAttribute("type", "submit");
+  submitButton.setAttribute("id", "calculator-submit-button");
+  submitButton.textContent = "Calculate";
+  // 9. Stwórz element <span>, nadaj mu id 'result-span'
+  const resultSpan = document.createElement("span");
+  resultSpan.setAttribute("id", "result-span");
+  // 10. Stwórz element <h2>, textContent 'Calculator'
+  const h2 = document.createElement("h2");
+  h2.textContent = "Calculator";
+  // 11. Podepij wszystkie elementy do elementu form, kolejność:
+  // - h2, firstNumberInput, secondNumberInput, select, submitButton, resultSpan
+  form.appendChild(h2);
+  form.appendChild(firstNumberInput);
+  form.appendChild(secondNumberInput);
+  form.appendChild(select);
+  form.appendChild(submitButton);
+  form.appendChild(resultSpan);
+  // 12. Podepnij element <form> do diva content
+  divContent.appendChild(form);
+};
+
+// 13. Sam kalkulator wyświetlaj na podstronie pod przyciskiem Page 2 (opcjonalne)
+spans[2].addEventListener("click", () => {
+  divContent.innerHTML = "";
+  renderCalculator();
+});
+// const optionElements = options.map((el) => {
+//   ...
+//   return option
+// })
