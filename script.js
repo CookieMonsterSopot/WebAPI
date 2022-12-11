@@ -242,7 +242,6 @@ const renderHomePage = () => {
   article.appendChild(articleH2);
   const articleP = document.createElement("p");
   articleP.setAttribute("class", "article-paragraph");
-  articleP.setAttribute("id", "5");
   articleP.textContent =
     "You don't have to install anything additional, just JavaScript will do. We have a few methods called 'selectors', these methods are used to access DOM elements and are found on the global 'document' object, which is an object representation of the whole HTML document. Here are some of them:";
   article.appendChild(articleP);
@@ -254,3 +253,36 @@ const renderHomePage = () => {
   divContent.appendChild(article);
 };
 renderHomePage();
+
+// Zad 3. Formularz kontaktowy
+// a) stwórz funkcję displayForm
+// W funkcji:
+// b) stwórz element <form> i nadaj mu id 'contact-form'
+// c) stwórz element <h2> i nadaj mu textContent 'Contact us!'
+// d) stwórz element <input> i nadaj mu type 'email' oraz id 'contact-form-input-email'
+// e) stwórz element <textarea> i nadaj mu id 'contact-form-textarea'
+// f) stwórz element <button> i nadaj mu type 'submit', id 'contact-form-submit-button' oraz textContent 'Send'
+// g) podepnij wszystkie elementy (przy pomocy appendChild) do elementu form, a sam form do diva id content
+// h) testowo wywołaj funkcję
+
+const displayForm = () => {
+  const form = document.createElement("form");
+  form.setAttribute("id", "contact-form");
+  const h2 = document.createElement("h2");
+  h2.textContent = "Contact us!";
+  const input = document.createElement("input");
+  input.setAttribute("type", "email");
+  input.setAttribute("id", "contact-form-input-email");
+  const textarea = document.createElement("textarea");
+  textarea.setAttribute("id", "contact-form-textarea");
+  const button = document.createElement("button");
+  button.setAttribute("type", "submit");
+  button.setAttribute("id", "contact-form-submit-button");
+  button.textContent = "Send";
+  form.appendChild(h2);
+  form.appendChild(input);
+  form.appendChild(textarea);
+  form.appendChild(button);
+  divContent.appendChild(form);
+};
+displayForm();
