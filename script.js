@@ -10,7 +10,7 @@
 // Przyjmuje jako argument selektor CSSowy, zwraca pierwszy pasujący element, jeżeli nie znajdzie nic to zwraca null.
 
 // - id
-const navH1 = document.querySelector("#nav-h1");
+//const navH1 = document.querySelector("#nav-h1");
 // console.log(navH1);
 
 // - class
@@ -72,6 +72,10 @@ const list = document.querySelector("ul");
 // e) element.nextElementSibling / previousElementSibling
 const middleLi = list.children[1];
 //console.log(middleLi.nextElementSibling);
+
+/* <li>to jest previousElementSibling dla mojego elementu</li>
+<li>To LI mam wybrane</li>
+<li>to jest nextElementSibling</li> */
 
 // f) element.parentElement
 //console.log(middleLi.parentElement);
@@ -200,3 +204,49 @@ allH2s.forEach((h2) => {
 contentDiv.id = "123";
 contentDiv.className = "312";
 contentDiv.name = "456";
+
+// Zad. 2
+// a) Usuń wszystkie elementy z body przy pomocy którejś z poznanych metod.
+// b) Odwtórz widok strony przy pomocy poznanych metod (document.createElement, element.appendChild())
+// Nie dotykamy pliku HTMLowego, chyba ze to konieczne.
+
+document.body.innerHTML = "";
+
+// navElement.remove();
+// contentDiv.remove();
+
+const navEl = document.createElement("nav");
+const navH1 = document.createElement("h1");
+navH1.setAttribute("id", "nav-h1");
+navH1.textContent = "DOM";
+navEl.appendChild(navH1);
+
+const spanTC = ["Home", "Page 1", "Page 2", "Page 3"];
+spanTC.forEach((el) => {
+  const span = document.createElement("span");
+  if (el === "Home") span.setAttribute("id", "first-span");
+  span.setAttribute("class", "nav-span");
+  span.textContent = el;
+  navEl.appendChild(span);
+});
+document.body.appendChild(navEl);
+
+const divContent = document.createElement("div");
+divContent.setAttribute("id", "content");
+const article = document.createElement("article");
+const articleH2 = document.createElement("h2");
+articleH2.textContent = "How to access the DOM?";
+article.appendChild(articleH2);
+const articleP = document.createElement("p");
+articleP.setAttribute("class", "article-paragraph");
+articleP.setAttribute("id", "5");
+articleP.textContent =
+  "You don't have to install anything additional, just JavaScript will do. We have a few methods called 'selectors', these methods are used to access DOM elements and are found on the global 'document' object, which is an object representation of the whole HTML document. Here are some of them:";
+article.appendChild(articleP);
+const ul = document.createElement("ul");
+article.appendChild(ul);
+const li = document.createElement("li");
+li.textContent = 'document.querySelector("cssSelectorHere")';
+ul.appendChild(li);
+divContent.appendChild(article);
+document.body.appendChild(divContent);
