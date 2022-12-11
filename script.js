@@ -135,7 +135,7 @@ const liToRemove = document.getElementById("li-to-remove");
 // b) element.remove()
 // Ta metoda po prostu usuwa element na którym została wywołana, usuwa cały element z tagami włącznie
 liToRemove.remove();
-
+document.body.appendChild(liToRemove);
 // c) element.removeChild()
 // Metoda usuwa wskazany element dziecko elementu na którym została wywołana.
 // list to wyżej zdefiniowana zmienna
@@ -233,20 +233,24 @@ document.body.appendChild(navEl);
 
 const divContent = document.createElement("div");
 divContent.setAttribute("id", "content");
-const article = document.createElement("article");
-const articleH2 = document.createElement("h2");
-articleH2.textContent = "How to access the DOM?";
-article.appendChild(articleH2);
-const articleP = document.createElement("p");
-articleP.setAttribute("class", "article-paragraph");
-articleP.setAttribute("id", "5");
-articleP.textContent =
-  "You don't have to install anything additional, just JavaScript will do. We have a few methods called 'selectors', these methods are used to access DOM elements and are found on the global 'document' object, which is an object representation of the whole HTML document. Here are some of them:";
-article.appendChild(articleP);
-const ul = document.createElement("ul");
-article.appendChild(ul);
-const li = document.createElement("li");
-li.textContent = 'document.querySelector("cssSelectorHere")';
-ul.appendChild(li);
-divContent.appendChild(article);
 document.body.appendChild(divContent);
+//
+const renderHomePage = () => {
+  const article = document.createElement("article");
+  const articleH2 = document.createElement("h2");
+  articleH2.textContent = "How to access the DOM?";
+  article.appendChild(articleH2);
+  const articleP = document.createElement("p");
+  articleP.setAttribute("class", "article-paragraph");
+  articleP.setAttribute("id", "5");
+  articleP.textContent =
+    "You don't have to install anything additional, just JavaScript will do. We have a few methods called 'selectors', these methods are used to access DOM elements and are found on the global 'document' object, which is an object representation of the whole HTML document. Here are some of them:";
+  article.appendChild(articleP);
+  const ul = document.createElement("ul");
+  article.appendChild(ul);
+  const li = document.createElement("li");
+  li.textContent = 'document.querySelector("cssSelectorHere")';
+  ul.appendChild(li);
+  divContent.appendChild(article);
+};
+renderHomePage();
