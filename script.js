@@ -275,6 +275,23 @@ const displayForm = () => {
   input.setAttribute("id", "contact-form-input-email");
   const textarea = document.createElement("textarea");
   textarea.setAttribute("id", "contact-form-textarea");
+
+  //
+  const select = document.createElement("select");
+  const option1 = document.createElement("option");
+  option1.textContent = "Error";
+  option1.value = "error";
+  const option2 = document.createElement("option");
+  option2.textContent = "Suggestion";
+  option2.value = "suggestion";
+  const option3 = document.createElement("option");
+  option3.textContent = "Message";
+  option3.value = "message";
+  select.appendChild(option1);
+  select.appendChild(option2);
+  select.appendChild(option3);
+  //
+
   const button = document.createElement("button");
   button.setAttribute("type", "submit");
   button.setAttribute("id", "contact-form-submit-button");
@@ -282,7 +299,37 @@ const displayForm = () => {
   form.appendChild(h2);
   form.appendChild(input);
   form.appendChild(textarea);
+  form.appendChild(select);
   form.appendChild(button);
   divContent.appendChild(form);
+
+  // h2.addEventListener("click", () => {
+  //   alert("H2 zostało kliknięte");
+  // });
+  // funkcja addEventListener to funkcja pozwalająca nam na nasłuchiwanie na eventy i reakcje na te eventy
+  // przyjmuje 2 argumenty: pierwszy to string dla eventu, drugi to funkcja która ma się wykonać przy wyłapaniu wcześniej zdefiniowanego eventu
+  form.addEventListener("submit", (event) => {
+    // blokada refresha strony po submitcie
+    event.preventDefault();
+
+    // ściąganie wartości z inputów
+    const email = input.value;
+    const message = textarea.value;
+    const type = select.value;
+    console.log(email, message, type);
+
+    //console.log(event);
+  });
 };
-displayForm();
+
+const spans = document.getElementsByTagName("span");
+
+spans[0].addEventListener("click", () => {
+  divContent.innerHTML = "";
+  renderHomePage();
+});
+
+spans[1].addEventListener("click", () => {
+  divContent.innerHTML = "";
+  displayForm();
+});
